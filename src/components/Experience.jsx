@@ -1,93 +1,37 @@
 import { motion } from "framer-motion";
-
-const experiences = [
-  {
-    year: "Juli 2025 - September2025",
-    title: "Kasir – WR Swalayan",
-    description:
-      "Melayani proses pembayaran pelanggan, melakukan stok opname, menata display barang, menerima barang datang, serta menjaga kebersihan area kerja."
-  },
-  {
-    year: "Januari 2025 – Mei 2025",
-    title: "Part-Time Crew – Crepes Time",
-    description:
-      "Melayani pelanggan, membuat produk sesuai pesanan, mengelola transaksi offline dan online, melakukan stok opname, serta merekap hasil penjualan harian."
-  },
-  {
-    year: "Juli 2024 - Oktober 2024",
-    title: "Staff Photoplace – Transmart Maguwo",
-    description:
-      "Melayani pelanggan dalam proses cetak foto, mengoperasikan mesin cetak, memastikan hasil cetak sesuai permintaan, serta menjaga kerapian area kerja."
-  },
-  {
-    year: "Juni 2023 – Juni 2024",
-    title: "Store Crew – PT Indomarco Prismatama (Indomaret)",
-    description:
-      "Melayani pelanggan, mengelola transaksi penjualan, melakukan stok opname, menata display produk, serta membantu operasional toko sesuai SOP."
-  },
-
-   {
-    year: "Mei 2023 - juli 2024",
-    title: "Kasir – Mediko Swalayan",
-    description:
-      "Melayani proses pembayaran pelanggan, melakukan stok opname, menata display barang, memasang label harga, menerima barang datang, serta menjaga kebersihan dan kerapian area kerja.",
-  },
-
-  {
-    year: " 6 bulan ",
-    title: "Praktik Kerja Lapangan – Youvee Komputer",
-    description:
-      "Melakukan pengecekan dan perbaikan komputer maupun laptop, mengganti komponen, serta memberikan pelayanan kepada pelanggan."
-  },
-
-  
-];
+import SectionTitle from "./SectionTitle";
+import { experiences } from "../data/profile";
 
 function Experience() {
   return (
-    <section id="experience" className="py-24 bg-white">
-      <div className="max-w-6xl mx-auto px-8">
+    <section id="experience" className="py-20 md:py-28 bg-white">
+      <div className="max-w-4xl mx-auto px-5 sm:px-8">
+        <SectionTitle eyebrow="Perjalanan">Experience</SectionTitle>
 
-        <motion.h2
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-4xl font-bold text-center text-indigo-600 mb-16"
-        >
-          Experience
-        </motion.h2>
-
-        <div className="space-y-8">
-
-          {experiences.map((item, index) => (
-
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="bg-slate-50 p-8 rounded-3xl shadow-xl hover:shadow-2xl transition"
+        <ol className="relative border-l-2 border-indigo-100 ml-3 space-y-8">
+          {experiences.map((item) => (
+            <motion.li
+              key={item.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
+              viewport={{ once: true, amount: 0.2 }}
+              className="relative pl-6 sm:pl-8"
             >
+              <span className="absolute -left-[9px] top-7 h-4 w-4 rounded-full bg-indigo-600 ring-4 ring-white" />
 
-              <span className="text-indigo-600 font-bold">
-                {item.year}
-              </span>
+              <div className="bg-slate-50 border border-slate-100 p-6 sm:p-7 rounded-2xl hover:shadow-lg hover:bg-white transition">
+                <span className="inline-block rounded-full bg-indigo-50 px-3 py-1 text-sm font-semibold text-indigo-600">
+                  {item.year}
+                </span>
 
-              <h3 className="text-2xl font-bold mt-3">
-                {item.title}
-              </h3>
+                <h3 className="text-lg sm:text-xl font-bold mt-3">{item.title}</h3>
 
-              <p className="text-gray-600 mt-4 leading-7">
-                {item.description}
-              </p>
-
-            </motion.div>
-
+                <p className="text-slate-600 mt-3 leading-7">{item.description}</p>
+              </div>
+            </motion.li>
           ))}
-
-        </div>
-
+        </ol>
       </div>
     </section>
   );
